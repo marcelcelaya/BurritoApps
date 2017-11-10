@@ -54,15 +54,15 @@ namespace Burritos1
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "138562366866311",
+               appSecret: "a7838cd703c4f5fefd15ca46a19c7242");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "829885545418-6fr4ih0bk7o3k8c6cc69d466mhrb3jhr.apps.googleusercontent.com",
+                ClientSecret = "p4Iwr1sxAqwMFVaGMvDHsJ-"
+            });
         }
     }
 }

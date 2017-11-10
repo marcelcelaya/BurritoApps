@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Burritos1.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
