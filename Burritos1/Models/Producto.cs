@@ -16,6 +16,4 @@ namespace Burritos1.Models
         [Required]
         public string Descripcion { get; set; }
     }
-
-   
 }

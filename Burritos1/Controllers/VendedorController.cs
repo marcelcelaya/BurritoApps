@@ -15,7 +15,6 @@ namespace Burritos1.Controllers
     [Authorize(Roles = "Vendedor,Administrador")]
     public class VendedorController : Controller
     {
-        int Mensaje { get; set; }
         BurritoContext db = new BurritoContext();
         // GET: Vendedor
         public ActionResult Index()
@@ -37,24 +36,28 @@ namespace Burritos1.Controllers
                 BurritoContext db = new BurritoContext();
                 db.Productos.Add(producto);
                 db.SaveChanges();
+                TempData["Message"] = "Agregado";
+                
             }
-            return View();
+            return RedirectToAction("ListarProductos");
         }
         #endregion
+
         #region ListarProductos
         public ActionResult ListarProductos()
         {
 
-            if (Mensaje==(int)MENSAJE.EXITO)
+            if (TempData["Message"] !=null)
             {
-                ViewBag.SucessMessage = "Exito";
-            }
-            if (Mensaje == (int)MENSAJE.ERROR)
-            {
-                ViewBag.ErrorMessage = "ERROR";
-            }
-            Mensaje = (int)MENSAJE.NOMENSAJE;
+                switch (TempData["Message"])
+                {
+                    case "Modificado": ViewBag.SucessMessage = "Modificado"; break;
+                    case "Eliminado": ViewBag.SucessMessage = "Eliminado"; break;
+                    case "Agregado": ViewBag.SucessMessage = "Agregado"; break;
+                    default: ViewBag.SucessMessage = "Error"; break;
+                }
 
+            }
             BurritoContext db = new BurritoContext();
             String vendedor = User.Identity.Name;
             var data = db.Database.SqlQuery<Producto>(
@@ -63,7 +66,7 @@ namespace Burritos1.Controllers
             return View(data);
         }
 
-
+        
 
 
         #endregion
@@ -75,12 +78,12 @@ namespace Burritos1.Controllers
             Producto producto = db.Productos.Find(id);
             if (producto != null && producto.Vendedor == User.Identity.Name)
             {
-                Mensaje = (int)MENSAJE.EXITO;
+                TempData["Message"] = "Exito";
                 return View(producto);
             }
             else
             {
-                Mensaje = (int)MENSAJE.ERROR;
+                TempData["Message"] = "Error";
                 return RedirectToAction("ListarProductos");
             }
         }
@@ -90,7 +93,7 @@ namespace Burritos1.Controllers
             producto.Vendedor = User.Identity.Name;
             db.Entry(producto).State = EntityState.Modified;
             db.SaveChanges();
-            Mensaje = (int)MENSAJE.EXITO;
+            TempData["Message"] = "Modificado";
             return RedirectToAction("ListarProductos");
         }
         #endregion
@@ -101,13 +104,14 @@ namespace Burritos1.Controllers
             Producto producto = db.Productos.Find(id);
             return View(producto);
         }
+
         [HttpPost]
         public ActionResult EliminarProducto(Producto producto)
         {
 
             db.Entry(producto).State = EntityState.Deleted;
             db.SaveChanges();
-            Mensaje = (int)MENSAJE.EXITO;
+            TempData["Message"] = "Eliminado";
             return RedirectToAction("ListarProductos");
         }
         #endregion

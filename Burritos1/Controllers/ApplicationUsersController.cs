@@ -65,7 +65,7 @@ namespace Burritos1.Controllers
                     var userManager = new UserManager<ApplicationUser>(
                         new UserStore<ApplicationUser>(db));
                     //User esta en rol?
-                    var userEstaenRol = userManager.IsInRole(idUser, "Usuario");
+                    var userEstaenRol = userManager.IsInRole(idUser, ListRoles);
                     
                     if (!userEstaenRol) {
                         var resultado = userManager.AddToRole(idUser, ListRoles);
@@ -121,8 +121,6 @@ namespace Burritos1.Controllers
         }
 
         // POST: ApplicationUsers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
