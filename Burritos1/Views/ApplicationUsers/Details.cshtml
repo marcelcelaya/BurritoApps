@@ -4,11 +4,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalles/Roles</h2>
 
 <div>
-    <h4>ApplicationUser</h4>
     <hr />
+    <h4>Aplicaci&oacute;n de Usuarios</h4>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Email)
@@ -108,7 +108,8 @@
         <div class="form-group">
             <div>
                 <br />
-                <input type="submit" value="Add Role" class="btn btn-success" />
+                <input type="submit" value="Agregar Rol" name="Add Role" class="btn btn-success" />
+                <input type="submit" value="Remover Rol" name="Del Role" class="btn btn-danger" />
             </div>
         </div>
     }

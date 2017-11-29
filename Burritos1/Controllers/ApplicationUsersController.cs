@@ -65,15 +65,38 @@ namespace Burritos1.Controllers
                         new UserStore<ApplicationUser>(db));
                     //User esta en rol?
                     var userEstaenRol = userManager.IsInRole(idUser, ListRoles);
-
-                    if (!userEstaenRol) {
-                        var resultado = userManager.AddToRole(idUser, ListRoles);
-                        TempData["Message"] = "UsuarioNuevoRol";
+                    if(Request.Form["Add Role"] != null)
+                    {
+                        if (!userEstaenRol)
+                        {
+                            var resultado = userManager.AddToRole(idUser, ListRoles);
+                            TempData["Message"] = "UsuarioNuevoRol";
+                        }
+                        else
+                        {
+                            TempData["Message"] = "UsuarioRolExistente";
+                        }
+                       // db.SaveChanges();
                     }
                     else
                     {
-                        TempData["Message"] = "UsuarioRolExistente";
-                    }
+                        if (userEstaenRol)
+                        {
+                            if (Request.Form["Del Role"] != null)
+                            {
+                                //Remover Usuario de rol
+                                var resultado = userManager.RemoveFromRole(idUser, ListRoles);
+                                TempData["Message"] = "UsuarioRemovidoRol";
+                                
+                            }      
+                        }
+                        else
+                        {
+                            //El usuario no estaba en el rol
+                            TempData["Message"] = "UsuarioNoTeniaRol";
+                        }
+                        //db.SaveChanges();
+                    }               
                     //GetRoles de Usuario 
                     //var roles = userManager.GetRoles(idUser);
                     //Remover Usuario de rol
