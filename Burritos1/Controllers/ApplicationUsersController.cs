@@ -60,16 +60,20 @@ namespace Burritos1.Controllers
                     var roleManager = new RoleManager<IdentityRole>(
                         new RoleStore<IdentityRole>(db));
                     //Creando el rol
-
                     //var resultado = roleManager.Create(new IdentityRole("Usuario"));
                     var userManager = new UserManager<ApplicationUser>(
                         new UserStore<ApplicationUser>(db));
                     //User esta en rol?
                     var userEstaenRol = userManager.IsInRole(idUser, ListRoles);
-                    
+
                     if (!userEstaenRol) {
                         var resultado = userManager.AddToRole(idUser, ListRoles);
-                    }   
+                        TempData["Message"] = "UsuarioNuevoRol";
+                    }
+                    else
+                    {
+                        TempData["Message"] = "UsuarioRolExistente";
+                    }
                     //GetRoles de Usuario 
                     //var roles = userManager.GetRoles(idUser);
                     //Remover Usuario de rol

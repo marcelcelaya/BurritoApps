@@ -4,12 +4,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Mvc;
-enum MENSAJE
-{
-    NOMENSAJE,
-    EXITO,
-    ERROR
-}
+
 namespace Burritos1.Controllers
 {
     [Authorize(Roles = "Vendedor,Administrador")]
