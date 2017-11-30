@@ -1,5 +1,7 @@
 ﻿@model Burritos1.Models.Producto
-
+@{
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+}
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()

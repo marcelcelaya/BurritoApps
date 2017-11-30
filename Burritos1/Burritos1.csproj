@@ -290,6 +290,7 @@
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
     <Content Include="Views\ApplicationUsers\Roles.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

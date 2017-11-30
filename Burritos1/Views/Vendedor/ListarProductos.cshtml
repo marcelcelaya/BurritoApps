@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<Burritos1.Models.Producto>
-
+@{ 
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+}
 <p>
     @{  if (TempData["Message"] != null)
         {
