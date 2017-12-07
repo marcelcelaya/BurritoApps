@@ -20,7 +20,7 @@ namespace Burritos1.Controllers
             BurritoContext db = new BurritoContext();
             return View(db.Productos.ToList());
         }
-        
+        [HttpGet]
         public ActionResult MostrarProducto(int id)
         {
             BurritoContext db = new BurritoContext();
@@ -32,5 +32,6 @@ namespace Burritos1.Controllers
             }
             return View();
         }
+
     }
 }

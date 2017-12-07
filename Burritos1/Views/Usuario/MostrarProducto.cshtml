@@ -55,5 +55,15 @@
     </dl>
 </div>
 <p>
+    @using (Html.BeginForm())
+    {
+       <input type="number" name="cantidad" placeholder="Cantidad"/>
+        <div class="form-group">
+            <div>
+                <br />
+                <input type="submit" value="Añadir!" name="AddProduct" class="btn btn-success" />
+            </div>
+        </div>
+    }
     @Html.ActionLink("Comprar Burrito", "Index") 
 </p>
