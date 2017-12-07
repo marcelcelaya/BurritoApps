@@ -11,13 +11,16 @@ namespace Burritos1.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public LinkedList<Orden> vectorOrdenes { get; set; }
+        public Orden order { get; set; }
     }
     public class Orden
     {
+        [Key]
+        public int idOrden { get; set; }
         public int idProducto { get; set; }
-        public int idComprador { get; set; }
-        public int idVendedor { get; set; }
+        public string idComprador { get; set; }
+        public string idVendedor { get; set; }
         public int Cantidad { get; set; }
     }
+
 }
