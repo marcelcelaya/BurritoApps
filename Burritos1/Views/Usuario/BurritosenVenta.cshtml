@@ -42,8 +42,7 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-               <!-- //Html.ActionLink("Actualizar", "ActualizarProducto", new { id = item.Id }) |-->
-
+                @Html.ActionLink("Ver producto", "MostrarProducto", new { id = item.Id }) |
             </td>
         </tr>
     }

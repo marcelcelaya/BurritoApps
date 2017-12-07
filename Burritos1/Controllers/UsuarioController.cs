@@ -20,5 +20,17 @@ namespace Burritos1.Controllers
             BurritoContext db = new BurritoContext();
             return View(db.Productos.ToList());
         }
+        
+        public ActionResult MostrarProducto(int id)
+        {
+            BurritoContext db = new BurritoContext();
+            Producto producto = db.Productos.Find(id);
+            if (producto != null && producto.Vendedor == User.Identity.Name)
+            {
+                //TempData["Message"] = "Exito";
+                return View(producto);
+            }
+            return View();
+        }
     }
 }
