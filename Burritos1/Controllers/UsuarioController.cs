@@ -25,7 +25,7 @@ namespace Burritos1.Controllers
         {
             BurritoContext db = new BurritoContext();
             Producto producto = db.Productos.Find(id);
-            if (producto != null && producto.Vendedor == User.Identity.Name)
+            if (producto != null)
             {
                 //TempData["Message"] = "Exito";
                 return View(producto);
