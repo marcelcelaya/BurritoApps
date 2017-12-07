@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Burritos1.Models.Ordenes>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model=>model.order.idOrden)</th>
+        <th>@Html.DisplayNameFor(model=>model.order.Producto)</th>     
+        <th>@Html.DisplayNameFor(model=> model.order.Vendedor)</th>
+        <th>@Html.DisplayNameFor(model => model.order.Cantidad)</th>
+        <th>@Html.DisplayNameFor(model => model.order.Precio)</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(model => item.order.idOrden)
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => item.order.Producto)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.order.Vendedor)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.order.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.order.Precio)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) 
+        </td>
+    </tr>
+}
+}
+
+</table>

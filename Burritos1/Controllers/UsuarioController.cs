@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,10 +41,11 @@ namespace Burritos1.Controllers
             Producto producto = db.Productos.Find(mimodelo.Id);
             Orden MiOrden = new Orden();
             MiOrden.Cantidad = int.Parse(cantidad);
-            MiOrden.idComprador = User.Identity.GetUserId();
+            //MiOrden.idComprador = User.Identity.GetUserId();
             MiOrden.idVendedor = producto.Vendedor;
             MiOrden.idProducto = producto.Id;
             Ordenes SuperOrden = new Ordenes();
+            SuperOrden.idComprador = User.Identity.GetUserId();
             SuperOrden.order = MiOrden;
             db.Ordenes.Add(SuperOrden);
             db.SaveChanges();
@@ -54,6 +56,18 @@ namespace Burritos1.Controllers
                 return View(producto);
             }*/
             return View();
+        }
+        public ActionResult MisOrdenes()
+        {
+            BurritoContext db = new BurritoContext();
+            var data = db.Database.SqlQuery<Ordenes>(
+                @"SELECT * FROM dbo.Ordenes 
+                WHERE idComprador = @idComprador ", new SqlParameter("@idComprador", User.Identity.GetUserId())).ToList();
+            if (data != null)
+            { 
+                return View(data);
+            }
+            return RedirectToAction("MostrarProducto");
         }
     }
 }
