@@ -12,7 +12,7 @@ namespace Burritos1.Models
         {
 
         }
-        public DbSet<Hielera> Hieleras { get; set; }
+        public DbSet<Ordenes> Ordenes { get; set; }
         public DbSet<Producto> Productos { get; set; }
     }
 }

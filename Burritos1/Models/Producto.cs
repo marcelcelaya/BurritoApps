@@ -15,5 +15,7 @@ namespace Burritos1.Models
         public float Costo { get; set; }
         [Required]
         public string Descripcion { get; set; }
+        [Required]
+        public int Disponibles { get; set; }
     }
 }

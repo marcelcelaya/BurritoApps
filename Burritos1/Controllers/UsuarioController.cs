@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Burritos1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,13 @@ namespace Burritos1.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("BurritosenVenta");
+        }
+
+        public ActionResult BurritosenVenta()
+        {
+            BurritoContext db = new BurritoContext();
+            return View(db.Productos.ToList());
         }
     }
 }

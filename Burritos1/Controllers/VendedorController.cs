@@ -14,7 +14,7 @@ namespace Burritos1.Controllers
         // GET: Vendedor
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("ListarProductos");
         }
         #region AgregarProducto
         public ActionResult AgregarProducto()
