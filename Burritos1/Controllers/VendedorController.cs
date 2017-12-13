@@ -1,4 +1,5 @@
 ﻿using Burritos1.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Data.Entity;
 using System.Data.SqlClient;
@@ -25,7 +26,9 @@ namespace Burritos1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AgregarProducto(Producto producto)
         {
+            producto.IdVendedor = User.Identity.GetUserId();
             producto.Vendedor = User.Identity.Name;
+            //db.Entry(producto).State = EntityState.Modified;
             if (ModelState.IsValid)
             {
                 BurritoContext db = new BurritoContext();

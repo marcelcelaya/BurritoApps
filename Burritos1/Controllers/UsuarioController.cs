@@ -39,22 +39,22 @@ namespace Burritos1.Controllers
         {
             BurritoContext db = new BurritoContext();
             Producto producto = db.Productos.Find(mimodelo.Id);
-            Orden MiOrden = new Orden();
-            MiOrden.Cantidad = int.Parse(cantidad);
-            //MiOrden.idComprador = User.Identity.GetUserId();
-            MiOrden.idVendedor = producto.Vendedor;
-            MiOrden.idProducto = producto.Id;
-            Ordenes SuperOrden = new Ordenes();
-            SuperOrden.idComprador = User.Identity.GetUserId();
-            SuperOrden.order = MiOrden;
-            db.Ordenes.Add(SuperOrden);
+            var data = db.Database.SqlQuery<Ordenes>(
+                @"SELECT * from dbo.Ordenes WHERE idComprador = @idComprador", new SqlParameter("@idComprador", User.Identity.GetUserId())).ToList();
+            Ordenes orden = new Ordenes();
+            orden.Cantidad = int.Parse(cantidad);
+            orden.idComprador = User.Identity.GetUserId();
+            orden.Vendedor = mimodelo.Vendedor;
+            orden.Precio = mimodelo.Costo;
+            db.Ordenes.Add(orden);
             db.SaveChanges();
-            /*
-            if (producto != null)
+          
+            
+            if (data != null)
             {
                 //TempData["Message"] = "Exito";
-                return View(producto);
-            }*/
+                return View(data);
+            }
             return View();
         }
         public ActionResult MisOrdenes()

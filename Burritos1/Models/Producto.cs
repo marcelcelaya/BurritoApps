@@ -17,5 +17,6 @@ namespace Burritos1.Models
         public string Descripcion { get; set; }
         [Required]
         public int Disponibles { get; set; }
+        public string IdVendedor { get; set; }
     }
 }
