@@ -1,3 +1,25 @@
-﻿@{
-    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+﻿@model IEnumerable<Burritos1.Models.Producto>
+
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+        <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+        <th>@Html.DisplayNameFor(model => model.Costo)</th>
+        <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+        <th>@Html.DisplayNameFor(model => model.Disponibles)</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+        <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+        <td>@Html.DisplayFor(modelItem => item.Costo)</td>
+        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+        <td>@Html.DisplayFor(modelItem => item.Disponibles)</td>
+        
+    </tr>
 }
+
+</table>

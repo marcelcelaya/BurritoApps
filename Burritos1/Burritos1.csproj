@@ -277,7 +277,6 @@
     <Content Include="Views\Account\GetAdminRole.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\BurritosenVenta.cshtml" />
-    <Content Include="Views\Vendedor\RevisarHielera.cshtml" />
     <Content Include="Views\Vendedor\AgregarProducto.cshtml" />
     <Content Include="Views\Vendedor\ListarProductos.cshtml" />
     <Content Include="Views\Vendedor\ActualizarProducto.cshtml" />
@@ -294,6 +293,7 @@
     <Content Include="Views\Usuario\MostrarProducto.cshtml" />
     <Content Include="Views\Usuario\MisOrdenes.cshtml" />
     <Content Include="Views\Vendedor\MisOrdenes.cshtml" />
+    <Content Include="Views\Vendedor\RevisarHielera.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

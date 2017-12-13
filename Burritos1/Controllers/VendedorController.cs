@@ -112,7 +112,6 @@ namespace Burritos1.Controllers
             return RedirectToAction("ListarProductos");
         }
         #endregion
-
         #region Ordenes
         public ActionResult MisOrdenes()
         {
@@ -126,6 +125,18 @@ namespace Burritos1.Controllers
             }
             return View();
         }
+        #endregion
+        #region Hielera
+        public ActionResult RevisarHielera()
+        {
+            BurritoContext db = new BurritoContext();
+            String vendedor = User.Identity.Name;
+            var data = db.Database.SqlQuery<Producto>(
+                @"SELECT * FROM dbo.Productoes 
+                WHERE Vendedor = @Vendedor AND Disponibles>0", new SqlParameter("@Vendedor", vendedor)).ToList();
+            return View(data);
+        }
+
         #endregion
     }
 }
