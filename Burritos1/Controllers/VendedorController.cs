@@ -171,7 +171,7 @@ namespace Burritos1.Controllers
             }
             else
             {
-                if (Request.Form["Vaciar Role"] != null)
+                if (Request.Form["Vaciar Hielera"] != null)
                 {
                     BurritoContext db = new BurritoContext();
                     String vendedor = User.Identity.Name;
