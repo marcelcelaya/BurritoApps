@@ -293,6 +293,7 @@
     <Content Include="Views\Shared\_UserLayout.cshtml" />
     <Content Include="Views\Usuario\MostrarProducto.cshtml" />
     <Content Include="Views\Usuario\MisOrdenes.cshtml" />
+    <Content Include="Views\Vendedor\MisOrdenes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

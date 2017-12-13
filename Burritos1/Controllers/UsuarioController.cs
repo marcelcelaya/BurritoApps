@@ -35,6 +35,7 @@ namespace Burritos1.Controllers
             }
             return View();
         }
+        [HttpPost]
         public ActionResult MostrarProducto(Producto mimodelo,string cantidad)
         {
             BurritoContext db = new BurritoContext();
@@ -45,6 +46,7 @@ namespace Burritos1.Controllers
             orden.Cantidad = int.Parse(cantidad);
             orden.idComprador = User.Identity.GetUserId();
             orden.Vendedor = mimodelo.Vendedor;
+            orden.Vendedor = mimodelo.IdVendedor;
             orden.Precio = mimodelo.Costo;
             db.Ordenes.Add(orden);
             db.SaveChanges();
@@ -53,7 +55,7 @@ namespace Burritos1.Controllers
             if (data != null)
             {
                 //TempData["Message"] = "Exito";
-                return View(data);
+                return View(mimodelo);
             }
             return View();
         }
