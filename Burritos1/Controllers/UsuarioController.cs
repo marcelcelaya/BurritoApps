@@ -66,7 +66,7 @@ namespace Burritos1.Controllers
                 TempData["Message"] = "Exito";
                 return View(mimodelo);
             }
-            return View();
+            return RedirectToAction("BurritosEnVenta");
         }
         public ActionResult MisOrdenes()
         {
