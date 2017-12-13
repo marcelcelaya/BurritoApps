@@ -11,6 +11,7 @@
         <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
         <th>@Html.DisplayNameFor(model => model.Precio)</th>
         <th>@Html.DisplayNameFor(model => model.Estado)</th>
+        <th>@Html.DisplayNameFor(model => model.FormadePago)</th>
     </tr>
 
     @foreach (var item in Model)
@@ -22,6 +23,7 @@
             <td>@Html.DisplayFor(model => item.Cantidad)</td>
             <td>@Html.DisplayFor(model => item.Precio)</td>
             <td>@Html.DisplayFor(model => item.Estado)</td>
+            <td>@Html.DisplayFor(model => item.FormadePago)</td>
         </tr>
     }
 

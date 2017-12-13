@@ -53,6 +53,7 @@ namespace Burritos1.Controllers
             orden.Estado = "Nueva Orden";
             orden.Precio = producto.Costo;
             orden.idProducto = producto.Id;
+            orden.FormadePago = "Efectivo";
             if (orden.Cantidad > producto.Disponibles)
             {
                 TempData["Message"] = "Nohaytantos";
