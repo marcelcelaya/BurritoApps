@@ -45,9 +45,12 @@ namespace Burritos1.Controllers
             Ordenes orden = new Ordenes();
             orden.Cantidad = int.Parse(cantidad);
             orden.idComprador = User.Identity.GetUserId();
-            orden.Vendedor = mimodelo.Vendedor;
-            orden.Vendedor = mimodelo.IdVendedor;
-            orden.Precio = mimodelo.Costo;
+            orden.Vendedor = producto.Vendedor;
+            orden.idVendedor = producto.IdVendedor;
+            orden.Producto = producto.Nombre;
+            orden.Estado = "Nueva Orden";
+            orden.Precio = producto.Costo;
+            orden.idProducto = producto.Id;
             db.Ordenes.Add(orden);
             db.SaveChanges();
           

@@ -5,36 +5,24 @@
 </p>
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model=>model.Id)</th>
-        <th>@Html.DisplayNameFor(model=>model.Producto)</th>     
-        <th>@Html.DisplayNameFor(model=> model.Vendedor)</th>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Producto)</th>
+        <th>@Html.DisplayNameFor(model => model.Vendedor)</th>
         <th>@Html.DisplayNameFor(model => model.Cantidad)</th>
         <th>@Html.DisplayNameFor(model => model.Precio)</th>
+        <th>@Html.DisplayNameFor(model => model.Estado)</th>
     </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(model => item.idComprador)
-        </td>
-
-        <td>
-            @Html.DisplayFor(model => item.Producto)
-        </td>
-        <td>
-            @Html.DisplayFor(model => item.Vendedor)
-        </td>
-        <td>
-            @Html.DisplayFor(model => item.Cantidad)
-        </td>
-        <td>
-            @Html.DisplayFor(model => item.Precio)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.Id) </td>
+            <td>@Html.DisplayFor(model => item.Producto)</td>
+            <td>@Html.DisplayFor(model => item.Vendedor)</td>
+            <td>@Html.DisplayFor(model => item.Cantidad)</td>
+            <td>@Html.DisplayFor(model => item.Precio)</td>
+            <td>@Html.DisplayFor(model => item.Estado)</td>
+        </tr>
+    }
 
 </table>

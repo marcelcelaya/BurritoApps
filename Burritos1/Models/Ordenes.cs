@@ -17,6 +17,7 @@ namespace Burritos1.Models
         public string Producto { get; set; }
         public string Vendedor { get; set; }
         public float Precio { get; set; }
+        public string Estado { get; set; }
     }
 
 }

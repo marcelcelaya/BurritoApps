@@ -114,5 +114,19 @@ namespace Burritos1.Controllers
         }
         #endregion
 
+        #region Ordenes
+        public ActionResult MisOrdenes()
+        {
+            BurritoContext db = new BurritoContext();
+            var data = db.Database.SqlQuery<Ordenes>(
+                @"SELECT * FROM dbo.Ordenes 
+                WHERE idVendedor = @idVendedor ", new SqlParameter("@idVendedor", User.Identity.GetUserId())).ToList();
+            if (data != null)
+            {
+                return View(data);
+            }
+            return View();
+        }
+        #endregion
     }
 }
