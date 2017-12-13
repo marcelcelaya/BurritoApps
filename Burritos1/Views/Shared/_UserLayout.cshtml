@@ -24,7 +24,17 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Todos los Productos", "BurritosEnVenta", "Usuario")</li>
                     <li>@Html.ActionLink("Mis Ordenes","MisOrdenes","Usuario")</li>
-                    <li>@Html.ActionLink("Modo Vendedor", "Index", "Vendedor")</li>
+                        @{
+                            if (this.User.IsInRole("Vendedor"))
+                            {
+                                <li>@Html.ActionLink("Modo Vendedor", "Index", "Vendedor")</li>
+                            }
+                            if (this.User.IsInRole("Administrador"))
+                            {
+                                <li>@Html.ActionLink("Modo Administrador", "Index", "Administrador")</li>
+                            }
+                        }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
