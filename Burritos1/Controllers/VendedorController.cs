@@ -142,30 +142,50 @@ namespace Burritos1.Controllers
         [HttpPost]
         public ActionResult RevisarHielera(List<Producto> a,IEnumerable<Burritos1.Models.Producto> Productos)
         {
-            
-            List<string> listValues = new List<string>();
-            foreach (string key in Request.Form.AllKeys)
+            if (Request.Form["Actualizar Hielera"] != null)
             {
-                if (key.StartsWith("Disponibles"))
+                List<string> listValues = new List<string>();
+                foreach (string key in Request.Form.AllKeys)
                 {
-                    listValues.Add((Request.Form[key]));
+                    if (key.StartsWith("Disponibles"))
+                    {
+                        listValues.Add((Request.Form[key]));
+                    }
+                }
+                string cadena = listValues[0];
+                string[] valores;
+                valores = cadena.Split(',');
+
+                BurritoContext db = new BurritoContext();
+                String vendedor = User.Identity.Name;
+
+                List<Producto> data = db.Database.SqlQuery<Producto>(
+                    @"SELECT * FROM dbo.Productoes 
+                    WHERE Vendedor = @Vendedor AND Disponibles>0", new SqlParameter("@Vendedor", vendedor)).ToList();
+                for (int i = 0; i < data.Count(); i++)
+                {
+                    data[i].Disponibles = int.Parse(valores[i]);
+                    db.Entry(data[i]).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
             }
-            string cadena = listValues[0];
-            string[] valores;
-            valores = cadena.Split(',');
-
-            BurritoContext db = new BurritoContext();
-            String vendedor = User.Identity.Name;
-           
-            List<Producto> data = db.Database.SqlQuery<Producto>(
-                @"SELECT * FROM dbo.Productoes 
-                WHERE Vendedor = @Vendedor AND Disponibles>0", new SqlParameter("@Vendedor", vendedor)).ToList();
-            for(int i = 0; i < data.Count(); i++)
+            else
             {
-                data[i].Disponibles = int.Parse(valores[i]);
-                db.Entry(data[i]).State = EntityState.Modified;
-                db.SaveChanges();
+                if (Request.Form["Vaciar Role"] != null)
+                {
+                    BurritoContext db = new BurritoContext();
+                    String vendedor = User.Identity.Name;
+
+                    List<Producto> data = db.Database.SqlQuery<Producto>(
+                        @"SELECT * FROM dbo.Productoes 
+                    WHERE Vendedor = @Vendedor AND Disponibles>0", new SqlParameter("@Vendedor", vendedor)).ToList();
+                    for (int i = 0; i < data.Count(); i++)
+                    {
+                        data[i].Disponibles = 0;
+                        db.Entry(data[i]).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
             }
             return RedirectToAction("RevisarHielera");
         }
