@@ -1,25 +1,46 @@
 ﻿@model IEnumerable<Burritos1.Models.Producto>
-
-
-<table class="table">
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.Nombre)</th>
-        <th>@Html.DisplayNameFor(model => model.Tipo)</th>
-        <th>@Html.DisplayNameFor(model => model.Costo)</th>
-        <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
-        <th>@Html.DisplayNameFor(model => model.Disponibles)</th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-        <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
-        <td>@Html.DisplayFor(modelItem => item.Costo)</td>
-        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
-        <td>@Html.DisplayFor(modelItem => item.Disponibles)</td>
-        
-    </tr>
+@{
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
 }
 
-</table>
+
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+
+    <table class="table" name ="">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Vendedor)</th>
+            <th>@Html.DisplayNameFor(model => model.IdVendedor)</th>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Tipo)</th>
+            <th>@Html.DisplayNameFor(model => model.Costo)</th>
+            <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.Disponibles)</th>
+
+            <th></th>
+        </tr>
+        @for(int i=0; i<Model.Count();i++)
+        {
+            <tr>
+               <td>@Html.DisplayFor(modelItem => modelItem.ElementAt(i).Vendedor)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ElementAt(i).IdVendedor)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ElementAt(i).Id)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ElementAt(i).Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ElementAt(i).Tipo)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ElementAt(i).Costo)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ElementAt(i).Descripcion)</td>
+                <td>@Html.EditorFor(modelItem => modelItem.ElementAt(i).Disponibles)</td>
+            </tr>
+
+        }
+    </table>
+
+    <div class="form-group">
+        <div>
+            <br />
+            <input type="submit" name="Del Role" class="btn btn-success" />
+        </div>
+    </div>
+}

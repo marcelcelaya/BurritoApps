@@ -1,6 +1,7 @@
 ﻿using Burritos1.Models;
 using Microsoft.AspNet.Identity;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
@@ -127,6 +128,7 @@ namespace Burritos1.Controllers
         }
         #endregion
         #region Hielera
+        [HttpGet]
         public ActionResult RevisarHielera()
         {
             BurritoContext db = new BurritoContext();
@@ -137,6 +139,36 @@ namespace Burritos1.Controllers
             return View(data);
         }
 
+        [HttpPost]
+        public ActionResult RevisarHielera(List<Producto> a,IEnumerable<Burritos1.Models.Producto> Productos)
+        {
+            
+            List<string> listValues = new List<string>();
+            foreach (string key in Request.Form.AllKeys)
+            {
+                if (key.StartsWith("Disponibles"))
+                {
+                    listValues.Add((Request.Form[key]));
+                }
+            }
+            string cadena = listValues[0];
+            string[] valores;
+            valores = cadena.Split(',');
+
+            BurritoContext db = new BurritoContext();
+            String vendedor = User.Identity.Name;
+           
+            List<Producto> data = db.Database.SqlQuery<Producto>(
+                @"SELECT * FROM dbo.Productoes 
+                WHERE Vendedor = @Vendedor AND Disponibles>0", new SqlParameter("@Vendedor", vendedor)).ToList();
+            for(int i = 0; i < data.Count(); i++)
+            {
+                data[i].Disponibles = int.Parse(valores[i]);
+                db.Entry(data[i]).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("RevisarHielera");
+        }
         #endregion
     }
 }

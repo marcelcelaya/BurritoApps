@@ -116,3 +116,4 @@ C:\Users\Marcel\Documents\Visual Studio 2017\Projects\Burritos1\Burritos1\bin\Mi
 C:\Users\Marcel\Documents\Visual Studio 2017\Projects\Burritos1\Burritos1\obj\Debug\Burritos1.csproj.CoreCompileInputs.cache
 C:\Users\Marcel\Documents\Visual Studio 2017\Projects\Burritos1\Burritos1\obj\Debug\Burritos1.dll
 C:\Users\Marcel\Documents\Visual Studio 2017\Projects\Burritos1\Burritos1\obj\Debug\Burritos1.pdb
+C:\Users\Marcel\Documents\Visual Studio 2017\Projects\Burritos1\Burritos1\obj\Debug\Burritos1.csprojResolveAssemblyReference.cache
