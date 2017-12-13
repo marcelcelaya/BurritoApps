@@ -189,6 +189,32 @@ namespace Burritos1.Controllers
             }
             return RedirectToAction("RevisarHielera");
         }
+        [HttpGet]
+        public ActionResult AnadirHielera(int id)
+        {
+            Producto producto = db.Productos.Find(id);
+            if (producto != null && producto.Vendedor == User.Identity.Name)
+            {
+                return View(producto);
+            }
+            else
+            {
+                TempData["Message"] = "Error";
+                return RedirectToAction("ListarProductos");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AnadirHielera(Producto producto)
+        {//Hacer View de Satisfacción
+            int cantidad = producto.Disponibles;
+            producto= db.Productos.Find(producto.Id);
+            producto.Disponibles = cantidad;
+            db.Entry(producto).State = EntityState.Modified;
+            db.SaveChanges();
+            TempData["Message"] = "Modificado";
+            return RedirectToAction("ListarProductos");
+        }
         #endregion
     }
 }

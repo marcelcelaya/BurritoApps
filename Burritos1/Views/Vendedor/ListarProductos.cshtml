@@ -40,6 +40,7 @@
         <th>@Html.DisplayNameFor(model => model.Costo)</th>
         <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
         <th></th>
+        
     </tr>
 
     @foreach (var item in Model)
@@ -50,6 +51,11 @@
             <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
             <td>@Html.DisplayFor(modelItem => item.Costo)</td>
             <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+            <td>
+                @Html.ActionLink("Actualizar", "ActualizarProducto", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "EliminarProducto", new { id = item.Id }) |
+                @Html.ActionLink("Añadir a Hielera","AnadirHielera", new { id = item.Id })
+            </td>
         </tr>
     }
 

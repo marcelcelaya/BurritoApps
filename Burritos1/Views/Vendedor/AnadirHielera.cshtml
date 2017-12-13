@@ -1,0 +1,49 @@
+﻿@model Burritos1.Models.Producto
+@{
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <h4>Producto</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <dt>@Html.DisplayNameFor(model => model.Nombre)</dt>
+
+            <dd>@Html.DisplayFor(model => model.Nombre)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Vendedor)</dt>
+
+            <dd>@Html.DisplayFor(model => model.Vendedor)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Tipo)</dt>
+
+            <dd>@Html.DisplayFor(model => model.Tipo)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Costo)</dt>
+
+            <dd>@Html.DisplayFor(model => model.Costo)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Descripcion)</dt>
+
+            <dd>@Html.DisplayFor(model => model.Descripcion)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Disponibles)</dt>
+
+            <dd>@Html.EditorFor(model => model.Disponibles)</dd>
+
+            <dt> @Html.DisplayNameFor(model => model.IdVendedor)</dt>
+
+            <dd>@Html.DisplayFor(model => model.IdVendedor)</dd>
+            
+        </dl>
+
+
+        <input type="submit" value="Añadir a Hielera" name="Add Role" class="btn btn-success" />
+    </div>
+}
