@@ -1,5 +1,24 @@
 ﻿@model Burritos1.Models.Producto
 
+@{  if (TempData["Message"] != null)
+    {
+        if ((string)TempData["Message"] == "Nohaytantos")
+        {
+            <div class="alert alert-danger" role="alert">
+                Lo sentimos, el vendedor no tiene tantos burritos :(
+            </div>
+        }
+        else
+        {
+            if ((string)TempData["Message"] == "Exito")
+            {
+                <div class="alert alert-success" role="alert">
+                    Tu burrito ha sido agregado a tus ordenes con exito! :) 
+                </div>
+            }
+        }
+    }
+}
 <div>
     <h4>Producto</h4>
     <hr />

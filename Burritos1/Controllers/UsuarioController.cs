@@ -53,13 +53,17 @@ namespace Burritos1.Controllers
             orden.Estado = "Nueva Orden";
             orden.Precio = producto.Costo;
             orden.idProducto = producto.Id;
+            if (orden.Cantidad > producto.Disponibles)
+            {
+                TempData["Message"] = "Nohaytantos";
+                return View(mimodelo.Id);
+            }
             db.Ordenes.Add(orden);
             db.SaveChanges();
-          
-            
+
             if (data != null)
             {
-                //TempData["Message"] = "Exito";
+                TempData["Message"] = "Exito";
                 return View(mimodelo);
             }
             return View();
