@@ -40,7 +40,6 @@ namespace Burritos1.Controllers
             return RedirectToAction("ListarProductos");
         }
         #endregion
-
         #region ListarProductos
         public ActionResult ListarProductos()
         {

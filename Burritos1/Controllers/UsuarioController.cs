@@ -21,7 +21,9 @@ namespace Burritos1.Controllers
         public ActionResult BurritosenVenta()
         {
             BurritoContext db = new BurritoContext();
-            return View(db.Productos.ToList());
+            var data = db.Database.SqlQuery<Producto>(
+                @"SELECT * from dbo.Productoes Where Disponibles >0").ToList();
+            return View(data);
         }
         [HttpGet]
         public ActionResult MostrarProducto(int id)
