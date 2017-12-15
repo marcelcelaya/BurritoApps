@@ -38,7 +38,7 @@ namespace Burritos1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult MostrarProducto(Producto mimodelo,string cantidad, string numero)
+        public ActionResult MostrarProducto(Producto mimodelo, string cantidad, string numero)
         {
             BurritoContext db = new BurritoContext();
             Producto producto = db.Productos.Find(mimodelo.Id);
@@ -62,6 +62,7 @@ namespace Burritos1.Controllers
             }
             db.Ordenes.Add(orden);
             db.SaveChanges();
+            TempData["Message"] = "BurritoOrden";
             return RedirectToAction("BurritosEnVenta");
         }
         public ActionResult MisOrdenes()

@@ -1,5 +1,6 @@
 ﻿using Burritos1.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,6 +17,16 @@ namespace Burritos1.Controllers
         // GET: Vendedor
         public ActionResult Index()
         {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var idUser = User.Identity.GetUserId();
+                var userManager = new UserManager<ApplicationUser>(
+                new UserStore<ApplicationUser>(db));
+                if (!userManager.IsInRole(idUser, "Usuario")){
+                    var resultado = userManager.AddToRole(idUser, "Usuario");
+                    resultado = userManager.AddToRole(idUser, "Vendedor");
+                }               
+            }
             return RedirectToAction("ListarProductos");
         }
         #region AgregarProducto

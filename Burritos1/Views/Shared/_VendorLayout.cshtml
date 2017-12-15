@@ -26,6 +26,10 @@
                     <li>@Html.ActionLink("Mis Ordenes", "MisOrdenes", "Vendedor")</li>
                     <li>@Html.ActionLink("Revisar Hielera", "RevisarHielera", "Vendedor")</li>
                     <li>@Html.ActionLink("Modo Usuario", "Index", "Usuario")</li>
+                    @if (this.User.IsInRole("Administrador"))
+                    {
+                    <li>@Html.ActionLink("Modo Administrador", "Index", "ApplicationUsers")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

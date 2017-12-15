@@ -78,6 +78,7 @@ namespace Burritos1.Controllers
                         new UserStore<ApplicationUser>(db));
                     //Agregar Usuario al rol
                     var resultado = userManager.AddToRole(idUser, "Administrador");
+                    db.SaveChanges();
                     //User esta en rol?
                     //var userEstaenRol = userManager.IsInRole(idUser, "Usuario");
                     //GetRoles de Usuario 
@@ -187,14 +188,13 @@ namespace Burritos1.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Vendedor");
                 }
                 AddErrors(result);
             }

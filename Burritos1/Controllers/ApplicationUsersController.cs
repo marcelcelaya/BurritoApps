@@ -71,6 +71,7 @@ namespace Burritos1.Controllers
                         {
                             var resultado = userManager.AddToRole(idUser, ListRoles);
                             TempData["Message"] = "UsuarioNuevoRol";
+                            db.SaveChanges();
                         }
                         else
                         {
@@ -87,7 +88,7 @@ namespace Burritos1.Controllers
                                 //Remover Usuario de rol
                                 var resultado = userManager.RemoveFromRole(idUser, ListRoles);
                                 TempData["Message"] = "UsuarioRemovidoRol";
-                                
+                                db.SaveChanges();
                             }      
                         }
                         else

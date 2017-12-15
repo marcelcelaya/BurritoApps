@@ -7,6 +7,8 @@
 @{  if (TempData["Message"] != null)
     {
         <br />
+        <br />
+        <br />
         switch ((string)TempData["Message"])
         {
             case "Exito:":
@@ -17,6 +19,11 @@
             case "Nohaytantos":
                 <div class="alert alert-danger" role="alert">
                     No existen tantos burritos en la hielera del vendedor 
+                </div>
+                break;
+            case "BurritoOrden":
+                <div class="alert alert-success" role="alert">
+                    Has agregado tu burrito a una orden nueva
                 </div>
                 break;
         }
