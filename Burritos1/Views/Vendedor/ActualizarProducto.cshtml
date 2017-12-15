@@ -2,19 +2,23 @@
 @{
     Layout = "~/Views/Shared/_VendorLayout.cshtml";
 }
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<br />
+<h4>Actualizar Producto</h4>
+<hr />
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img src="~/images/burrito.png" width="160px" />
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+   
     <div class="form-horizontal">
-        <h4>Producto</h4>
-        <hr />
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
             

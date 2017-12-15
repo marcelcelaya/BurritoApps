@@ -58,7 +58,7 @@ namespace Burritos1.Controllers
             if (orden.Cantidad > producto.Disponibles)
             {
                 TempData["Message"] = "Nohaytantos";
-                return View(mimodelo.Id);
+                return RedirectToAction("BurritosenVenta");
             }
             db.Ordenes.Add(orden);
             db.SaveChanges();

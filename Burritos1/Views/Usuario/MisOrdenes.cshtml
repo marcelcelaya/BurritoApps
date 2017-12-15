@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<Burritos1.Models.Ordenes>
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+
+   <br />
+
 <table class="table">
     <tr>
         <th>@Html.DisplayNameFor(model => model.Id)</th>

@@ -1,4 +1,8 @@
 ﻿@model Burritos1.Models.Producto
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
 
 @{  if (TempData["Message"] != null)
     {
@@ -30,7 +34,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="~/images/burrito.png" width="160px" />
     <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(model => model.Nombre) =</dt>
+        <dt>@Html.DisplayNameFor(model => model.Nombre) </dt>
 
         <dd>@Html.DisplayFor(model => model.Nombre)</dd>
 
