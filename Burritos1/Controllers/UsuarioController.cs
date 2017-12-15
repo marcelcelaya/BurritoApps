@@ -38,7 +38,7 @@ namespace Burritos1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult MostrarProducto(Producto mimodelo,string cantidad)
+        public ActionResult MostrarProducto(Producto mimodelo,string cantidad, string numero)
         {
             BurritoContext db = new BurritoContext();
             Producto producto = db.Productos.Find(mimodelo.Id);
@@ -54,6 +54,7 @@ namespace Burritos1.Controllers
             orden.Precio = producto.Costo;
             orden.idProducto = producto.Id;
             orden.FormadePago = "Efectivo";
+            orden.TelCliente = numero;
             if (orden.Cantidad > producto.Disponibles)
             {
                 TempData["Message"] = "Nohaytantos";

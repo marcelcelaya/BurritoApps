@@ -22,60 +22,45 @@
 <div>
     <h4>Producto</h4>
     <hr />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="~/images/burrito.png" width="160px" />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Nombre) =</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+        <dd>@Html.DisplayFor(model => model.Nombre)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Vendedor)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Vendedor)</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Vendedor)
-        </dd>
+        <dd>@Html.DisplayFor(model => model.Vendedor)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Tipo)</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
+        <dd>@Html.DisplayFor(model => model.Tipo)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Costo)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Costo)</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Costo)
-        </dd>
+        <dd>@Html.DisplayFor(model => model.Costo)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Descripcion)</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+        <dd>@Html.DisplayFor(model => model.Descripcion)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Disponibles)
-        </dt>
+        <dt>@Html.DisplayNameFor(model => model.Disponibles)</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Disponibles)
-        </dd>
+        <dd>@Html.DisplayFor(model => model.Disponibles)</dd>
 
     </dl>
 </div>
 <p>
     @using (Html.BeginForm())
     {
+        <input type="tel" name="numero" placeholder="Numero de Tel:" />
+        <br />
        <input type="number" name="cantidad" placeholder="Cantidad"/>
         <div class="form-group">
             <div>

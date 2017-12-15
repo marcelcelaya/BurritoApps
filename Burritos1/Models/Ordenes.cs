@@ -19,7 +19,6 @@ namespace Burritos1.Models
         public float Precio { get; set; }
         public string Estado { get; set; }
         public string FormadePago { get; set; }
-        public string TelCliente { get; set; }
         public string TelVendedor { get; set; }
     }
 
