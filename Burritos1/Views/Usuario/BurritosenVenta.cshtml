@@ -2,7 +2,26 @@
 @{ 
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+
 <br />
+@{  if (TempData["Message"] != null)
+    {
+        switch ((string)TempData["Message"])
+        {
+            <br />
+            case "Exito:":
+                <div class="alert alert-success" role="alert">
+                    Tu burrito ha sido modificado con exito.
+                </div>
+                break;
+            case "Nohaytantos":
+                <div class="alert alert-danger" role="alert">
+                    No existen tantos burritos en la hielera del vendedor :(
+                </div>
+                break;
+        }
+    }
+}
 <table class="table">
     <tr>
         <th>

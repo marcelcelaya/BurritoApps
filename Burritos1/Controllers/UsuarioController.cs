@@ -62,12 +62,6 @@ namespace Burritos1.Controllers
             }
             db.Ordenes.Add(orden);
             db.SaveChanges();
-
-            if (data != null)
-            {
-                TempData["Message"] = "Exito";
-                return View(mimodelo);
-            }
             return RedirectToAction("BurritosEnVenta");
         }
         public ActionResult MisOrdenes()
