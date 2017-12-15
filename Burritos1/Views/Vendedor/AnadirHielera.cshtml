@@ -9,10 +9,11 @@
     <div>
         <h4>Producto</h4>
         <hr />
+        <img src="~/images/burrito.png" />
         <dl class="dl-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
-
+           
             <dt>@Html.DisplayNameFor(model => model.Nombre)</dt>
 
             <dd>@Html.DisplayFor(model => model.Nombre)</dd>
@@ -36,10 +37,6 @@
             <dt>@Html.DisplayNameFor(model => model.Disponibles)</dt>
 
             <dd>@Html.EditorFor(model => model.Disponibles)</dd>
-
-            <dt> @Html.DisplayNameFor(model => model.IdVendedor)</dt>
-
-            <dd>@Html.DisplayFor(model => model.IdVendedor)</dd>
             
         </dl>
 
